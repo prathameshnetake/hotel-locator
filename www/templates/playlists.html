@@ -1,0 +1,23 @@
+<ion-view view-title="Trending Dish">
+
+  <ion-content has-bouncing="true">
+  	<ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="doRefresh()">
+  	</ion-refresher>  
+    <div class="list card" ng-repeat="x in items">
+	  		<div class="item item-avatar">
+	    		<img src="http://localhost/mysite/php/{{x.location}}">
+	    		<h2>{{x.name}}</h2>
+	    		<p>{{x.discription}}</p>
+	  		</div>
+	  		<div class="item item-image">
+	    		<img src="http://localhost/mysite/php/{{x.location}}">
+	  		</div>
+	  	<a class="item item-icon-left assertive" href="#">
+	    <i class="icon ion-coffee"></i>
+	    Discover More
+	  	</a>
+	</div>
+  </ion-content>
+</ion-view>

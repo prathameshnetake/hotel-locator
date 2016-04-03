@@ -1,0 +1,22 @@
+<ion-view view-title="Browse">
+  <ion-content>
+    <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="doRefresh()">
+  	</ion-refresher>  
+    <div class="list card" ng-repeat="x in hotels">
+	  		<div class="item item-avatar">
+	    		<img src="http://localhost/mysite/php/{{x.location}}">
+	    		<h2>{{x.name}}</h2>
+	    		<p>{{x.discription}}</p>
+	  		</div>
+	  		<div class="item item-image">
+	    		<img src="http://localhost/mysite/php/{{x.location}}">
+	  		</div>
+	  	<a class="item item-icon-left assertive" ng-click="showOnMap(x.lat, x.lng)" href="#">
+	    <i class="icon ion-coffee"></i>
+	    Show on map
+	  	</a>
+	</div>
+  </ion-content>
+</ion-view>
