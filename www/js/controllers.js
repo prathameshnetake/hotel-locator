@@ -107,18 +107,9 @@ angular.module('home.controllers', [])
 
 .controller('PlaylistsCtrl', function($scope,$http) {
   $scope.items = [];
-  $http({
-  method: 'GET',
-  url: 'http://localhost/mysite/php/dish_data.php' 
-  }).then(function successCallback(response) {
-    // this callback will be called asynchronously
-    // when the response is available
-    console.log(response)
-  }, function errorCallback(response) {
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-    console.log('Err'+ response)
-  });
+  $http.get("http://localhost/mysite/php/dish_data.php")
+    .success(function (response) {$scope.items = response.records;});
+      console.log($scope.items);
 
 	$scope.doRefresh = function(){
 		$http.get("http://localhost/mysite/php/dish_data.php")
@@ -170,11 +161,17 @@ angular.module('home.controllers', [])
   var latLng = new google.maps.LatLng(getCookie("lat"), getCookie("lng"));
     var mapOptions = {
       center: latLng,
-      zoom: 12,
+      zoom: 16,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
+    $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    var marker = new google.maps.Marker({
+    position: latLng,
+    map: $scope.map,
+    title: 'Hello World!'
+    });
 
-    $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions); 
+     
     console.log($scope.map);
 
 })

@@ -5,11 +5,17 @@
     pulling-text="Pull to refresh..."
     on-refresh="doRefresh()">
   	</ion-refresher>  
-    <div class="list card" ng-repeat="x in items">
+  	<div class="bar bar-header item-input-inset">
+	  	<label class="item-input-wrapper">
+		    <i class="icon ion-ios-search placeholder-icon"></i>
+		    <input type="search" placeholder="Search dish by name" ng-model="searchText">
+		</label>		  
+	</div>  
+    <div class="list card" ng-repeat="x in items | filter: searchText">
 	  		<div class="item item-avatar">
 	    		<img src="http://localhost/mysite/php/{{x.location}}">
 	    		<h2>{{x.name}}</h2>
-	    		<p>{{x.discription}}</p>
+	    		<p>{{x.discription}}</p>	    		
 	  		</div>
 	  		<div class="item item-image">
 	    		<img src="http://localhost/mysite/php/{{x.location}}">
